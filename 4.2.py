@@ -25,10 +25,7 @@ for stdl in sys.stdin:
             code += results[i][0]
 
         if code == m.group(3):
-            print(code+" matched "+m.group(3))
-            answer += int(m.group(2))
-            print(m.group(2))
-            print(answer)
+            # just rotate by m.group(2)
 
-print(answer)
+
 
