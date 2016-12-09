@@ -5,6 +5,13 @@ import re
 
 answer = 0
 
+def rot(char):
+    if char == 'z' or char == 'Z' :
+        return chr( ord(char) - 25 )
+    else:
+        return chr( ord(char) + 1 )
+
+
 for stdl in sys.stdin:
     m = re.match(r"^(.*)-(...)\[(.....)\]$", stdl)
     if m:
@@ -18,14 +25,18 @@ for stdl in sys.stdin:
             else:
                 dictionary[ch] = 1
         
-        #for keys in sorted(dictionary):
         results = sorted(dictionary.items(), key = lambda x: (-x[1],x[0]))
         code = ""
         for i in range(0,5):
             code += results[i][0]
 
         if code == m.group(3):
-            # just rotate by m.group(2)
+            decrypt = ''
+            for ch in chars:
+                for x in range(0,int(m.group(2))):
+                    ch = rot(ch)
+                decrypt += ch
+            print(decrypt + ' has sector id ' + m.group(2))
 
 
-
+                 
