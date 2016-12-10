@@ -34,6 +34,7 @@ for stdl in sys.stdin:
             decrypt = ''
             for ch in chars:
                 for x in range(0,int(m.group(2))):
+                    # faster with three alphabets and mod26
                     ch = rot(ch)
                 decrypt += ch
             print(decrypt + ' has sector id ' + m.group(2))
